@@ -1,0 +1,21 @@
+# IDE configuration
+.idea
+.vscode
+
+# Environments
+venv*/
+.venv*/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Packaging / C extensions
+build/
+dist/
+*.so
+xyz.egg-info/
+
+# Notebook
+.ipynb_checkpoints/
