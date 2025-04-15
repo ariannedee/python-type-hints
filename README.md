@@ -2,11 +2,15 @@
 
 This is the code for the *O'Reilly Live Training* - **Python Type Hinting** presented by Arianne Dee
 
+The code examples are still under development. 
+Feel free to follow the setup instructions now, but download closer to the course date.
+
 Before the class, please follow these instructions:
 1. [Install Python](#1-ensure-python-39-or-higher-is-installed)
 1. [Use an appropriate code editor](#2-use-an-appropriate-code-editor)
 1. [Download the code](#3-download-the-course-files)
-5. [Download the resources](#4-at-the-beginning-of-class-download-the-resources)
+1. [Install dependencies](#4-install-package-dependencies)
+1. [Download the resources](#5-at-the-beginning-of-class-download-the-resources)
 
 ## Set up instructions
 ### 1. Ensure Python 3.9 or higher is installed
