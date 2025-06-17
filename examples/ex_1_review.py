@@ -1,6 +1,8 @@
-question_1 = {  # Variable, dictionary (dict)
+answer = 42  # Variable
+
+question_1 = {  # Dictionary (dict)
     "question": "What is the meaning of life",
-    "answer": 42
+    "answer": answer
 }
 
 question_2 = {
@@ -11,20 +13,20 @@ question_2 = {
 questions = [question_1, question_2]  # List
 
 def ask(question):  # Function
-    user_answer = input(question["question"] + "? ")
-    if user_answer == question["answer"]:
+    user_answer = input(question["question"] + "? ")  # User input
+    if user_answer == question["answer"]:  # Conditional
         return True
     else:
         return False
 
 
 class Quiz:  # Class
-    def __init__(self, questions):
-        self.questions = questions
+    def __init__(self, questions):  # Dunder methods - __init__ is the initializer that gets called implicitly on Quiz()
+        self.questions = questions  # Instance attributes
         self.num_correct = 0
 
     def run(self):  # Method
-        for question in questions:
+        for question in questions:  # For-loop
             correct = ask(question)
             self.num_correct += correct
 
