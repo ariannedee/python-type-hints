@@ -1,8 +1,6 @@
-answer = 42  # Variable
-
 question_1 = {  # Dictionary (dict)
     "question": "What is the meaning of life",
-    "answer": answer
+    "answer": 42
 }
 
 question_2 = {
@@ -12,11 +10,16 @@ question_2 = {
 
 questions = [question_1, question_2]  # List
 
+def is_correct(guess, answer):
+    return guess.strip().lower() == answer.lower()
+
 def ask(question):  # Function
     user_answer = input(question["question"] + "? ")  # User input
-    if user_answer == question["answer"]:  # Conditional
+    if is_correct(user_answer, question["answer"]):  # Conditional
+        print('Correct')
         return True
     else:
+        print('Incorrect')
         return False
 
 
