@@ -11,7 +11,7 @@ def distance(p1: Coordinates, p2: Coordinates) -> float:
 
 print(distance((10, 10), (7, 6)))
 
-# %%
+# %% NewType
 from typing import NewType
 
 UserId = NewType("UserId", int)
@@ -25,7 +25,7 @@ uid2 = UserId('2')  # Mypy: arg-type
 get_user(3)          # Mypy: arg-type
 get_user(UserId(4))  # Works
 
-# %%
+# %% NewType + TypeDict example
 from typing import TypedDict, NewType
 
 UserId = NewType("UserId", int)

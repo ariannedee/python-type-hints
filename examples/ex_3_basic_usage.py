@@ -1,4 +1,4 @@
-# Functions
+# %% Functions
 def echo(text: str, times: int) -> str:
     return (text + '\n') * times
 
@@ -10,20 +10,17 @@ def greet(name, shout: bool = False) -> str:
         return f"Hello, {name.upper()}!"
     return f"Hello, {name}."
 
-
-# Variables
+# %% Variables
 age: int = 30
 active: bool
 active = True
 
-
-# Lists
+# %% Lists
 from typing import List  # Can use built-in 'list' in 3.9+
 
 user_ids: List[int] = [123, 456, 789]
 
-
-# Classes
+# %% Classes
 from dataclasses import dataclass
 
 @dataclass  # Quick class creation feature for storing data (3.7+)

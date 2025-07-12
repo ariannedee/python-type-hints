@@ -1,3 +1,4 @@
+# %% Import from typing vs built-in generics
 from __future__ import annotations  # Use in < 3.9 to support built-in generics, e.g. list[int]
 
 from typing import List
@@ -6,8 +7,7 @@ numbers_1: List[int] = [1, 2, 3, 4]  # Must use List in < 3.9
 
 numbers_2: list[int] = [1, 2, 3, 4]  # Can use list in 3.9+
 
-
-# Lists
+# %% Lists
 from typing import Any
 from ex_3_basic_usage import User
 
@@ -17,9 +17,7 @@ truthy: list = [1, 1.0, True, '1']  # Any type
 falsy: list[Any] = [0, 0.0, False, '']  # Any type
 numbers: list[int | float] = [1, 2.5, 3, 4.0]  # Multiple types
 
-
-# Dictionaries
-from typing import TypedDict
+# %% Dictionaries
 
 letter_counts: dict[str, int] = {"a": 3, "b": 1, "n": 2}
 
@@ -45,8 +43,7 @@ class FlexibleUser(TypedDict):
     name: NotRequired[str]
     is_active: bool
 
-
-# Tuples
+# %% Tuples
 x: tuple[int] = (1,)
 
 y: tuple[int, float] = (1, 2.3)
@@ -60,6 +57,5 @@ a_tuple: tuple  # Equivalent to tuple[Any, ...]
 
 empty_tuple: tuple[()] = ()
 
-
-# Sets
+# %% Sets
 primes: set[int] = {2, 3, 5, 7, 11}
