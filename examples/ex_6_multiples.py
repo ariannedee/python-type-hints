@@ -24,13 +24,8 @@ assert distance([0, 0.0], (3, 4.0)) == 5
 # %% Optional
 from typing import Optional
 
-def truncate(num: float, precision: Optional[int] = None) -> int | float:
-    if precision is None:
-        return round(num)
-    return round(num * 10 ** precision) / 10 ** precision
-
-assert truncate(1.234, None) == 1
-assert truncate(12.34) == 12
-assert truncate(1.234, 1) == 1.2
-assert truncate(1.234, 2) == 1.23
-assert truncate(1.234, 0) == 1.0
+def find_index(item: str, a_list: list[str]) -> Optional[int]:
+    for i, x in enumerate(a_list):
+        if x == item:
+            return i
+    return None
