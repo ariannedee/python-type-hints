@@ -3,9 +3,9 @@ from __future__ import annotations  # Use in < 3.9 to support built-in generics,
 
 from typing import List
 
-numbers_1: List[int] = [1, 2, 3, 4]  # Must use List in < 3.9
+numbers_1: List[int] = [1, 2, 3, 4]  # Use typing.List in < 3.9 unless you import annotations from __future__
 
-numbers_2: list[int] = [1, 2, 3, 4]  # Can use list in 3.9+
+numbers_2: list[int] = [1, 2, 3, 4]  # Use list in 3.9+, or if you import annotations from __future__
 
 # %% Lists
 from typing import Any
@@ -21,6 +21,17 @@ numbers: list[int | float] = [1, 2.5, 3, 4.0]  # Multiple types
 
 letter_counts: dict[str, int] = {"a": 3, "b": 1, "n": 2}
 
+def run_quiz(capitals: dict[str, str]):
+    for place, capital in capitals.items():
+        guess = input(f"What is the capital of {place}? ").strip()
+        if guess.lower() == capital.lower():
+            print('Correct!')
+        else:
+            print('Incorrect. It is ' + capital)
+
+# %% TypedDict for specifying dict structure
+from typing import TypedDict
+
 class UserDict(TypedDict):
     id: int
     name: str
@@ -31,17 +42,25 @@ more_users: list[UserDict] = [
     {'id': 2, 'name': 'Guido', 'is_active': True},
 ]
 
-class PartialUser(TypedDict, total=False):
-    id: int
+# %% TypedDict - All keys are optional`
+class Location(TypedDict, total=False):
+    latitude: float
+    longitude: float
     name: str
-    is_active: bool
 
+locations: list[Location] = [
+    {'latitude': 33.958, 'longitude': -83.368, 'name': 'Athens'},
+    {'latitude': 42.986, 'longitude': -81.251},
+    {'name': 'Paris'},
+]
+
+# %% TypedDict - Specific keys are optional
 from typing import TypedDict, NotRequired
 
-class FlexibleUser(TypedDict):
-    id: int
-    name: NotRequired[str]
-    is_active: bool
+class Point(TypedDict):
+    x: int
+    y: int
+    z: NotRequired[int]
 
 # %% Tuples
 x: tuple[int] = (1,)
