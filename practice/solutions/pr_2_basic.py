@@ -1,22 +1,17 @@
-Question = dict[str, str]
+"""
+Add type hints to functions. Find at least 2 bugs.
+"""
+from typing import TypedDict
 
 
-question_1: Question = {
-    "question": "What is the meaning of life",
-    "answer": "42"  # Make str
-}
-
-question_2: Question = {
-    "question": "Which programming language was named after a British sketch comedy troupe",
-    "answer": "Python"
-}
-
-qs: list[Question] = [question_1, question_2]  # Rename questions to avoid name conflict
+class Question(TypedDict):
+    question: str
+    answer: str
 
 
 def ask(question: Question) -> bool:
     user_answer = input(question["question"] + "? ")
-    if user_answer.lower() == question["answer"].lower():
+    if user_answer.strip().lower() == question["answer"].lower():  # Case-insensitive
         return True
     else:
         return False
@@ -29,7 +24,7 @@ class Quiz:
 
     def run(self):
         for question in self.questions:  # Get questions from self
-            correct = ask(question)
+            correct: bool = ask(question)
             if correct:  # Check bool
                 self.num_correct += 1
 
@@ -37,4 +32,15 @@ class Quiz:
 
 
 if __name__ == "__main__":
+    qs: list[Question] = [  # Rename questions to avoid name conflict
+        {
+            "question": "What is the meaning of life",
+            "answer": "42"
+        },
+        {
+            "question": "Which programming language was named after a British sketch comedy troupe",
+            "answer": "Python"
+        }
+    ]
+
     Quiz(qs).run()
