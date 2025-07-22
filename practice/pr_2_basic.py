@@ -1,14 +1,6 @@
-question_1 = {
-    "question": "What is the meaning of life",
-    "answer": 42
-}
-
-question_2 = {
-    "question": "Which programming language was named after a British sketch comedy troupe",
-    "answer": "Python"
-}
-
-questions = [question_1, question_2]
+"""
+Add type hints to functions. Find at least 2 bugs.
+"""
 
 def ask(question):
     user_answer = input(question["question"] + "? ")
@@ -32,4 +24,15 @@ class Quiz:
 
 
 if __name__ == "__main__":
+    questions = [
+        {
+            "question": "What is the meaning of life",
+            "answer": 42
+        },
+        {
+            "question": "Which programming language was named after a British sketch comedy troupe",
+            "answer": "Python"
+        }
+    ]
+
     Quiz(questions).run()
