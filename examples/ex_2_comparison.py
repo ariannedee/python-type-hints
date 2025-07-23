@@ -22,10 +22,11 @@ def is_correct_w_type_comments(guess, answer):
     return guess.strip().lower() == answer.lower()
 
 
-def is_correct_w_type_comments_multiline(
-        guess,  # type: str
-        answer  # type: str
-):  # type: (...) -> bool
+def is_correct_w_type_comments_multiline(guess,  # type: str
+                                         answer  # type: str
+                                         ):
+    # type: (...) -> bool
+    """Check if the guess matches the answer, ignoring case and whitespace."""
     return guess.strip().lower() == answer.lower()
 
 
@@ -34,9 +35,7 @@ def is_correct_w_annotations(guess: str, answer: str) -> bool:
 
 
 def is_correct_best_practice(guess: str, answer: str) -> bool:
-    """
-    Check if the guess matches the answer, ignoring case and whitespace.
-    """
+    """Check if the guess matches the answer, ignoring case and whitespace."""
     return guess.strip().lower() == answer.lower()
 
 
