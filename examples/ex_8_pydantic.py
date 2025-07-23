@@ -33,7 +33,7 @@ class Person(BaseModel):
     address: Address
 
 p = Person(name="John", address={"city": "NY", "zip": "10001"})
-print(p.address.city)
+print(p.address.city)  # NY
 
 # %% More validation
 from pydantic import (BaseModel, EmailStr, Field, ValidationError,
@@ -61,3 +61,21 @@ try:
 except ValidationError as e:
     print(f"❌ Invalid user data for {user_data['name']}:")
     print(e)
+
+# %% TypedDict
+from typing import TypedDict
+
+from pydantic import TypeAdapter, ValidationError
+
+class UserDict(TypedDict):
+    id: int
+    name: str
+    is_active: bool
+
+user_adapter = TypeAdapter(UserDict)
+
+user = {'id': 1, 'name': 'Monty', 'is_active': False}
+try:
+    user_adapter.validate_python(user)
+except ValidationError as e:
+    print(repr(e))
