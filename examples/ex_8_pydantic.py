@@ -53,7 +53,7 @@ class User(BaseModel):
             raise ValueError("Name cannot contain numbers")
         return value
 
-user_data = {"name": "Monty", "age": 12, "email": "monty@python.com"}
+user_data = {"name": "Monty", "age": 12, "email": "@monty@python.com"}
 
 try:
     user = User(**user_data)
