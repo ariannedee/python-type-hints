@@ -2,8 +2,9 @@
 from math import sqrt
 from typing import TypeAlias
 
-Coord: TypeAlias = tuple[float, float]  # 3.10+
-Coordinate = tuple[float, float]        # <3.10
+type Coords = tuple[float, float]       # 3.12
+Coord: TypeAlias = tuple[float, float]  # 3.10
+Coordinate = tuple[float, float]        # 3.5
 
 def distance(p1: Coord, p2: Coordinate) -> float:
     return sqrt(
