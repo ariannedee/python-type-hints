@@ -8,6 +8,12 @@ class Question(TypedDict):
     answer: str
     difficulty: Difficulty
 
+# %% Constants
+from typing import Final
+
+DAYS_IN_A_WEEK: Final = 7
+DAYS_IN_A_WEEK = 8  # mypy: misc error
+
 # %% NoReturn
 import time
 from typing import NoReturn
