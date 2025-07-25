@@ -36,7 +36,7 @@ class Quiz:
 class InteractiveQuiz(Quiz):
     @staticmethod
     def ask_question(question: Question) -> str:
-        print(f"{question["question"]}")
+        print(f"{question['question']}")
         choices = question["options"]
         shuffle(choices)
         option_keys = "ABCDEFGHIJ"[:len(choices)]
