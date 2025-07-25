@@ -46,7 +46,7 @@ Clone the repository.
 #### If you don't know git:
 1. Click the "< > Code" (green) button at the top-right of the page
 2. Click "Download ZIP"
-3. Unzip it and move the **python-under-the-hood-main** folder to a convenient location
+3. Unzip it and move the **python-type-hints-main** folder to a convenient location
 
 ### 4. Install package dependencies
 Optional: set up a new virtual environment
