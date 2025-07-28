@@ -18,16 +18,8 @@ falsy: list[Any] = [0, 0.0, False, '']  # Any type
 numbers: list[int | float] = [1, 2.5, 3, 4.0]  # Multiple types
 
 # %% Dictionaries
-
 letter_counts: dict[str, int] = {"a": 3, "b": 1, "n": 2}
-
-def run_quiz(capitals: dict[str, str]):
-    for place, capital in capitals.items():
-        guess = input(f"What is the capital of {place}? ").strip()
-        if guess.lower() == capital.lower():
-            print('Correct!')
-        else:
-            print('Incorrect. It is ' + capital)
+many: dict[str, int | str | None] = {"a": 1, "b": '2', "c": None}
 
 # %% TypedDict for specifying dict structure
 from typing import TypedDict
@@ -41,6 +33,7 @@ more_users: list[UserDict] = [
     {'id': 1, 'name': 'Monty', 'is_active': False},
     {'id': 2, 'name': 'Guido', 'is_active': True},
 ]
+print(more_users[0]["name"].capitalize())
 
 # %% TypedDict - All keys are optional`
 class Location(TypedDict, total=False):
@@ -70,7 +63,7 @@ y: tuple[int, float] = (1, 2.3)
 z: tuple[list[int], dict[str, float], tuple[bool]]
 z = ([1, 2], {'pi': 3.14}, (True,))
 
-letters: tuple[str, ...] = ('a', 'b', 'c')  # Any number of arguments
+letters: tuple[str, ...] = ('a', 'b', 'c')  # Any number of str arguments
 
 a_tuple: tuple  # Equivalent to tuple[Any, ...]
 
