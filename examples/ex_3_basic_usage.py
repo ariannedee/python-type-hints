@@ -16,8 +16,6 @@ active: bool
 active = True
 
 # %% Lists
-from __future__ import annotations  # Needed in <3.9 to support built-in types
-
 items: list = [1, 2.0, False, None, ['list']]
 user_ids: list[int] = [123, 456, 789]
 mapping: dict[str, int] = {'a': 1, 'b': 2}
