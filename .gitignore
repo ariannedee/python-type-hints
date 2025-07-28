@@ -19,3 +19,6 @@ xyz.egg-info/
 
 # Notebook
 .ipynb_checkpoints/
+
+# Quiz files
+*.json
