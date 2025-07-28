@@ -51,3 +51,46 @@ def last2(sequence: list[NumberOrStr]) -> NumberOrStr:
 
 # %% Generic syntax for type aliases
 type ListOrSet[T] = list[T] | set[T]
+
+# %% TypeVar in aliases
+from typing import TypeVar, Iterable, Tuple
+
+Number = TypeVar('Number', int, float, complex)
+Vector = Iterable[Tuple[Number, Number]]
+
+def inproduct(v: Vector[Number]) -> Number:
+    return sum(x*y for x, y in v)
+
+print(inproduct([(1.2, 3.4)]))
+
+# %% Generic syntax for classes
+
+
+# %% TypeVar with classes
+from typing import Generic, TypeVar
+
+B = TypeVar('B')  # Declare a type variable
+
+class Box(Generic[B]):  # Subclass Generic with the variable
+    def __init__(self, value: B):
+        self.value = value
+
+    def get(self) -> B:
+        return self.value
+
+    def set(self, value: B) -> None:
+        self.value = value
+
+# Box that holds an int
+int_box = Box[int](123)
+print(int_box.get())  # 123
+int_box.set(456)
+print(int_box.get())
+
+# Box that holds a str
+str_box = Box[str]("hello")
+print(str_box.get())
+
+# Box that holds a list of floats
+float_list_box = Box[list[float]]([1.0, 2.5])
+print(float_list_box.get())  # [1.0, 2.5]
