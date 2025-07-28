@@ -5,7 +5,7 @@ def echo(text: str, times: int) -> str:
 print(echo("Hello", 3.0))
 
 
-def greet(name, shout: bool = False) -> str:
+def greet(name: str, shout: bool = False) -> str:
     if shout:
         return f"Hello, {name.upper()}!"
     return f"Hello, {name}."
@@ -16,9 +16,11 @@ active: bool
 active = True
 
 # %% Lists
-from typing import List  # Can use built-in 'list' in 3.9+
+from __future__ import annotations  # Needed in <3.9 to support built-in types
 
-user_ids: List[int] = [123, 456, 789]
+items: list = [1, 2.0, False, None, ['list']]
+user_ids: list[int] = [123, 456, 789]
+mapping: dict[str, int] = {'a': 1, 'b': 2}
 
 # %% Classes
 from dataclasses import dataclass
@@ -29,10 +31,10 @@ class User:
     name: str
     active: bool
 
-def deactivate(user: User):
+def deactivate(user: User) -> None:
     user.active = False
 
-users: List[User] = [
+users: list[User] = [
     User(1, 'Monty', True),
     User(2, 'Guido', True),
 ]
