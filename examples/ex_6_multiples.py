@@ -6,9 +6,10 @@ def print_twice(x: Any) -> None:
     print(x)
 
 # %%  Multiple values
+from math import sqrt
+
 def hypotenuse(a: int | float, b: int | float) -> float:
-    ...
-    return (a ** 2 + b ** 2) ** 0.5
+    return sqrt(a ** 2 + b ** 2)
 
 assert hypotenuse(3, 4) == 5.0
 assert hypotenuse(3.0, 4.0) == 5.0
@@ -16,10 +17,8 @@ assert hypotenuse(3.0, 4.0) == 5.0
 # %%  <3.9, use Union
 from typing import Union
 
-def distance(a: Union[list, tuple], b: Union[list, tuple]) -> float:
-    return hypotenuse(a[0] - b[0], a[1] - b[1])
-
-assert distance([0, 0.0], (3, 4.0)) == 5
+def stringify(val: Union[int, float, str]) -> str:
+    return str(val)
 
 # %% Optional
 from typing import Optional
