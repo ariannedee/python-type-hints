@@ -1,11 +1,10 @@
-from __future__ import annotations
-
+# See https://github.com/ariannedee/python-type-hints/issues/1 for an explanation
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:  # False during runtime
     from quiz import QuizDict
 
-leadership_quiz: QuizDict = {
+leadership_quiz: "QuizDict" = {
     "title": "Leadership Style Quiz (Four Color)",
     "questions": [
         {

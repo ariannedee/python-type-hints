@@ -98,14 +98,15 @@ def get_input_from_options(choices: list[str]) -> str:
         else:
             print("Invalid selection")
 
+# Could cause circular imports
+from quizzes.leadership import leadership_quiz
+from quizzes.programming import programming_quiz
 
 if __name__ == '__main__':
-    # Import quizzes from .py files
+    # Won't cause circular imports
     from quizzes.enneagram import enneagram_quiz
     from quizzes.hogwarts import hogwarts_quiz
     from quizzes.language import language_quiz
-    from quizzes.leadership import leadership_quiz
-    from quizzes.programming import programming_quiz
 
     quiz_manager = QuizManager()
 
@@ -114,7 +115,7 @@ if __name__ == '__main__':
     quiz_manager.save_quiz(hogwarts_quiz, "hogwarts.json")
     quiz_manager.save_quiz(leadership_quiz, "leadership.json")
     quiz_manager.save_quiz(cast(QuizDict, language_quiz), "language.json")
-    quiz_manager.save_quiz(cast(QuizDict, programming_quiz), "programming.json")
+    quiz_manager.save_quiz(programming_quiz, "programming.json")
 
     # Run quiz
     quiz = quiz_manager.load_quiz(f'programming.json')

@@ -1,6 +1,12 @@
-# Untyped variable
-# After import, can use typing.cast(QuizDict, language_quiz) to convert to a QuizDict
-programming_quiz = {
+# See https://github.com/ariannedee/python-type-hints/issues/1 for an explanation
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:  # False during runtime
+    from quiz import QuizDict
+
+programming_quiz: QuizDict = {
     "title": "Which Programming Language Are You?",
     "questions": [
         {

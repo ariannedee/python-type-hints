@@ -1,9 +1,6 @@
-from typing import TYPE_CHECKING
+from quiz import QuizDict
 
-if TYPE_CHECKING:  # False during runtime
-    import quiz
-
-enneagram_quiz: "quiz.QuizDict" = {
+enneagram_quiz: QuizDict = {
     "title": "Which Enneagram Type Are You?",
     "questions": [
         {

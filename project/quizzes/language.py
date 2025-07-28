@@ -1,3 +1,6 @@
+# Untyped variable
+# After import, can use typing.cast(QuizDict, language_quiz) to convert to a QuizDict
+
 language_quiz = {
     "title": "Which Language Are You?",
     "questions": [

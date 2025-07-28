@@ -1,8 +1,4 @@
-from __future__ import annotations
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    import quiz
+import quiz
 
 hogwarts_quiz: quiz.QuizDict = {
     "title": "Hogwarts House Quiz",
