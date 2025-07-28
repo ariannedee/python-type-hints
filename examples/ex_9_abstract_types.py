@@ -1,15 +1,16 @@
 # %%
 from typing import Sequence
 
-def smallest_index(seq: Sequence[int]) -> int | None:
-    if len(seq) == 0: return None
-    smallest = min(seq)  # iterable
-    return seq.index(smallest)
+def smallest_item_index(seq: Sequence[int]) -> int | None:
+    if len(seq) == 0:           # length
+        return None
+    smallest = min(seq)         # iterable
+    return seq.index(smallest)  # index method
 
-def test_smallest_index():
-    assert smallest_index([5, 2, 1, 4, 5]) == 2
-    assert smallest_index((1, 1)) == 0
-    assert smallest_index([]) is None
+def test_smallest_item_index():
+    assert smallest_item_index([5, 2, 1, 4, 5]) == 2
+    assert smallest_item_index((1, 1)) == 0
+    assert smallest_item_index([]) is None
 
 # %%
 from typing import Iterable
