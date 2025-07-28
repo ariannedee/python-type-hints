@@ -11,13 +11,13 @@ class User(BaseModel):
 
 user = User(
     id="123",  # Casts '123' to int
-    name='Guido',
+    name="Guido",
     last_login ="2025-01-02T03:04:05",  # Casts to dt
 )
 print(user.id)          # 123
 print(user.last_login)  # datetime object
 
-#%% Error reporting
+# %% Error reporting
 try:
     User(id='abc', name='Alice')
 except Exception as e:
@@ -53,7 +53,7 @@ class User(BaseModel):
             raise ValueError("Name cannot contain numbers")
         return value
 
-user_data = {"name": "Monty", "age": 12, "email": "@monty@python.com"}
+user_data = {"name": "Monty3", "age": 12, "email": "@monty@python.com"}
 
 try:
     user = User(**user_data)
@@ -62,7 +62,7 @@ except ValidationError as e:
     print(f"❌ Invalid user data for {user_data['name']}:")
     print(e)
 
-# %% TypedDict
+# %% TypedDict validation
 from typing import TypedDict
 
 from pydantic import TypeAdapter, ValidationError
@@ -74,7 +74,7 @@ class UserDict(TypedDict):
 
 user_adapter = TypeAdapter(UserDict)
 
-user = {'id': 1, 'name': 'Monty', 'is_active': False}
+user = {'id': 1.2, 'name': 'Monty', 'is_active': False}
 try:
     user_adapter.validate_python(user)
 except ValidationError as e:
