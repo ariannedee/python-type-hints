@@ -37,4 +37,5 @@ class Quiz:  # Class
 
 
 if __name__ == "__main__":
-    Quiz(questions).run()
+    quiz1 = Quiz(questions)  # Create Quiz instance
+    quiz1.run()              # Call run method
