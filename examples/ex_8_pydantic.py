@@ -7,7 +7,7 @@ class User(BaseModel):
     id: int
     name: str
     is_active: bool = True
-    last_login: datetime = None
+    last_login: datetime
 
 user = User(
     id="123",  # Casts '123' to int
@@ -19,7 +19,7 @@ print(user.last_login)  # datetime object
 
 # %% Error reporting
 try:
-    User(id='abc', name='Alice')
+    User(id='abc', name='Alice', last_login="2025-01-02T03:04:05")
 except Exception as e:
     print(e)
 
@@ -41,9 +41,9 @@ from pydantic import (BaseModel, EmailStr, Field, ValidationError,
 from typing import Annotated
 import re
 
-class User(BaseModel):
+class Adult(BaseModel):
     name: str
-    age: Annotated[int, Field(ge=13)]  # Must be greater than 13
+    age: Annotated[int, Field(ge=18)]  # Must be greater than 18
     email: EmailStr
 
     @field_validator("name")
@@ -53,7 +53,7 @@ class User(BaseModel):
             raise ValueError("Name cannot contain numbers")
         return value
 
-user_data = {"name": "Monty3", "age": 12, "email": "@monty@python.com"}
+user_data = {"name": "Monty3", "age": 15, "email": "@monty@python.com"}
 
 try:
     user = User(**user_data)
@@ -79,8 +79,8 @@ class UserDict(TypedDict):
 
 user_adapter = TypeAdapter(UserDict)
 
-user = {'id': 1.2, 'name': 'Monty', 'is_active': False}
+user_from_dict: UserDict = {'id': 1, 'name': 'Monty', 'is_active': False}
 try:
-    user_adapter.validate_python(user)
+    user_adapter.validate_python(user_from_dict)
 except ValidationError as e:
     print(repr(e))
