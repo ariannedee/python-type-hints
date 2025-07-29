@@ -2,7 +2,7 @@
 def echo(text: str, times: int) -> str:
     return (text + '\n') * times
 
-print(echo("Hello", 3.0))
+print(echo("Hello", 3))
 
 
 def greet(name: str, shout: bool = False) -> str:
