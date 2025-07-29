@@ -48,12 +48,15 @@ locations: list[Location] = [
 ]
 
 # %% TypedDict - Specific keys are optional
-from typing import TypedDict, NotRequired
+import sys
 
-class Point(TypedDict):
-    x: int
-    y: int
-    z: NotRequired[int]
+if sys.version_info >= (3, 11):
+    from typing import TypedDict, NotRequired  # 3.11+
+
+    class Point(TypedDict):
+        x: int
+        y: int
+        z: NotRequired[int]
 
 # %% Tuples
 x: tuple[int] = (1,)
