@@ -1,8 +1,10 @@
 """Rock paper scissors game"""
+from __future__ import annotations
+
 import random
 from dataclasses import dataclass
 from time import sleep
-from typing import Literal, Protocol, TypeVar, ClassVar, Optional
+from typing import Literal, Protocol, ClassVar, Optional
 
 Move = Literal["rock", "paper", "scissors"]
 MOVES: list[Move] = ["rock", "paper", "scissors"]
@@ -43,6 +45,7 @@ class BotPlayer:
         return choice
 
 
+
 class HumanPlayer:
     def __init__(self, name: str) -> None:
         self.name = name
@@ -65,10 +68,8 @@ def beats(m1: Move, m2: Move) -> bool:
             (m1 == "paper" and m2 == "rock") or
             (m1 == "scissors" and m2 == "paper"))
 
-T = TypeVar("T", bound=Player)
-
-class Game:
-    def __init__(self, player1: Player, player2: Player, best_of=3):
+class RPSGame:
+    def __init__(self, player1: Player, player2: Player, best_of: int = 3) -> None:
         self.player_1 = player1
         self.player_2 = player2
         self.best_of = best_of
@@ -79,6 +80,7 @@ class Game:
         player_1_choice = self.player_1.choose_move()
         player_2_choice = self.player_2.choose_move()
 
+        winner: Winner
         if player_1_choice == player_2_choice:
             winner = None
         elif beats(player_1_choice, player_2_choice):
@@ -96,7 +98,7 @@ class Game:
     def score_display(self) -> str:
         return f"{self.score[0]} - {self.score[1]}"
 
-    def play_game(self):
+    def play_game(self) -> None:
         while sum(self.score) < self.best_of:
             result = self.play_round()
             print(f"{self.score_display}: {result.display()}")
@@ -105,12 +107,12 @@ class Game:
         else:
             print(f"{self.player_2.name} wins!")
 
-    def display_history(self):
+    def display_history(self) -> None:
         for result in self.history:
             print(f"{result.player_1_move}, {result.player_2_move} -> {result.winner}")
 
 
 if __name__ == "__main__":
-    game = Game(BotPlayer(), BotPlayer())
+    game = RPSGame(BotPlayer(), BotPlayer())
     game.play_game()
     game.display_history()
