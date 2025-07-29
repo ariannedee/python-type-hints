@@ -41,18 +41,35 @@ class Circle:
     def area(self) -> float:
         return 3.14 * self._radius ** 2
 
+# %% Forward references as strings
+class Node:
+    def __init__(self, value: int, next_: 'Node | None' = None) -> None:
+        self.value = value
+        self.next = next_
 
-class Person:
+# %% Forward references with future import
+from __future__ import annotations
+
+class Node2:
+    def __init__(self, value: int, next_: Node2 | None = None) -> None:
+        self.value = value
+        self.next = next_
+
+# %% Overwritten methods should have the same signature
+class Human:
     def greet(self) -> str:
         return "Hello!"
 
-class Cowboy(Person):
+class Cowboy(Human):
     def greet(self) -> str:
         return "Howdy!"
 
-
 #%% Generics
-class Stack[T]:
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
+
+class Stack(Generic[T]):
     def __init__(self) -> None:
         self._items: list[T] = []
 
@@ -62,47 +79,23 @@ class Stack[T]:
     def pop(self) -> T:
         return self._items.pop()
 
-# %% Forward references as strings
-class Node:
-    value: int
-    next: 'Node'  # forward reference as a string
-
-    def __init__(self, value: int, next: 'Node' = None):
-        self.value = value
-        self.next = next
-
-# %% Forward references with future import
-from __future__ import annotations
-
-class Node2:
-    value: int
-    next: Node2  # works now
-
-    def __init__(self, value: int, next: Node2 = None):
-        self.value = value
-        self.next = next
-
-# %% Type and TypeVar
-from typing import Type, TypeVar
-
-TShape = TypeVar("TShape", bound="Shape")
-
+# %% Returning self and class problems
 class Shape:
     @classmethod
-    def create(cls: Type[TShape]) -> "Shape":
+    def create(cls) -> "Shape":
         return cls()
 
 class Square(Shape):
     sides = 4
 
 square = Square.create()
-print(square.sides)  # mypy: attr-defined
+print(square.sides)  # mypy: attr-defined, thinks it's a Shape
 
 # %% Returning self or cls
 from datetime import date
 from typing import Type, TypeVar
 
-TAnimal = TypeVar("TAnimal", bound="Animal")
+TAnimal = TypeVar("TAnimal", bound="Animal")  # In 3.11+, you can use typing.Self
 
 class Animal:
     def __init__(self, name: str, birthday: date) -> None:
@@ -132,6 +125,12 @@ from dataclasses import dataclass
 class Person:
     name: str
     age: int
+
+jack = Person("Jack", 11)
+jill = Person(name="Jill", age=9)
+
+print([jack, jill])
+assert jack != jill
 
 # %%
 from dataclasses import field
