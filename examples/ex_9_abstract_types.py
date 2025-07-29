@@ -1,13 +1,13 @@
 # %%
-from typing import Sequence
+from typing import Optional, Sequence  # Use int | None in 3.10+
 
-def smallest_item_index(seq: Sequence[int]) -> int | None:
+def smallest_item_index(seq: Sequence[int]) -> Optional[int]:
     if len(seq) == 0:           # length
         return None
     smallest = min(seq)         # iterable
     return seq.index(smallest)  # index method
 
-def test_smallest_item_index():
+def test_smallest_item_index() -> None:
     assert smallest_item_index([5, 2, 1, 4, 5]) == 2
     assert smallest_item_index((1, 1)) == 0
     assert smallest_item_index([]) is None
