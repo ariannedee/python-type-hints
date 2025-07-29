@@ -64,33 +64,49 @@ def inproduct(v: Vector[Number]) -> Number:
 print(inproduct([(1.2, 3.4)]))
 
 # %% Generic syntax for classes
+class Box[T]:
+    def __init__(self, content: T):
+        self.content = content
 
+    def get(self) -> T:
+        return self.content
+
+    def set(self, value: T) -> None:
+        self.content = value
+
+# Box that holds an int
+int_box: Box[int] = Box(123)
+print(int_box.get())  # 123
+int_box.set(456)
+print(int_box.get())
+
+# Box that holds a str
+str_box: Box[str] = Box("hello")
+print(str_box.get())
+
+# Box that holds a list of floats
+float_list_box: Box[list[float]] = Box([1.0, 2.5])
+print(float_list_box.get())  # [1.0, 2.5]
 
 # %% TypeVar with classes
 from typing import Generic, TypeVar
 
 B = TypeVar('B')  # Declare a type variable
 
-class Box(Generic[B]):  # Subclass Generic with the variable
-    def __init__(self, value: B):
-        self.value = value
+class Bag(Generic[B]):  # Subclass Generic with the variable
+    def __init__(self, values: list[B]):
+        self.values = values
 
-    def get(self) -> B:
-        return self.value
+    def take_out(self, item: B) -> B | None:
+        if item in self.values:
+            self.values.remove(item)
+            return item
+        return None
 
-    def set(self, value: B) -> None:
-        self.value = value
+    def put_in(self, value: B) -> None:
+        self.values.append(value)
 
-# Box that holds an int
-int_box = Box[int](123)
-print(int_box.get())  # 123
-int_box.set(456)
-print(int_box.get())
-
-# Box that holds a str
-str_box = Box[str]("hello")
-print(str_box.get())
-
-# Box that holds a list of floats
-float_list_box = Box[list[float]]([1.0, 2.5])
-print(float_list_box.get())  # [1.0, 2.5]
+ints: Bag[int] = Bag([1, 2, 3])
+ints.put_in(4)
+assert ints.take_out(2) == 2
+assert ints.values == [1, 3, 4]
