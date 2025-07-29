@@ -56,13 +56,13 @@ from typing import Generic, TypeVar
 B = TypeVar('B')  # Declare a type variable
 
 class Box(Generic[B]):  # Subclass Generic with the variable
-    def __init__(self, content: T):
+    def __init__(self, content: B):
         self.content = content
 
-    def get(self) -> T:
+    def get(self) -> B:
         return self.content
 
-    def set(self, value: T) -> None:
+    def set(self, value: B) -> None:
         self.content = value
 
 # Box that holds an int
