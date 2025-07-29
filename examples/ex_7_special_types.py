@@ -25,7 +25,7 @@ def elapsed_time() -> NoReturn:
         time.sleep(1)
         seconds += 1
 
-elapsed_time()
+# elapsed_time()
 
 # %% Callable (e.g. function passed as argument)
 from typing import Callable
