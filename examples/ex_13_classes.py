@@ -48,7 +48,7 @@ class Node:
         self.next = next_
 
 # %% Forward references with future import
-from __future__ import annotations
+from __future__ import annotations  # Must be at the top of a file
 
 class Node2:
     def __init__(self, value: int, next_: Node2 | None = None) -> None:
