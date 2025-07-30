@@ -1,4 +1,9 @@
-"""Rock paper scissors game"""
+"""Rock paper scissors game
+1. Add type hints, given that a game can have any kind of player
+2. Get mypy to pass
+3. Bonus: Add a dataclass for RoundResult
+4. Bonus: Add game.display_history() method that prints each round of the game's results
+"""
 import random
 from time import sleep
 
