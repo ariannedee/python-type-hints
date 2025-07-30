@@ -30,4 +30,4 @@ if __name__ == "__main__":
     files_w_sizes = get_file_sizes(all_files)
     largest = largest_files(files_w_sizes)
 
-    print(largest)  # TODO: print files -> filename: humanbytes(size)
+    print(largest)  # TODO: print files -> "{filename}: {humanbytes(size)}"
