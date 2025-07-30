@@ -1,5 +1,8 @@
 """
-Add type hints to functions. Find at least 2 bugs.
+1. Add type hints to functions.
+2. Find at least 2 bugs.
+3. Get mypy to pass with no errors
+4. Bonus: Run with questions from quiz_questions.py and get mypy to pass
 """
 
 def ask(question):
@@ -18,7 +21,11 @@ class Quiz:
     def run(self):
         for question in questions:
             correct = ask(question)
-            self.num_correct += correct
+            if correct:
+                self.num_correct += correct
+                print("Correct!")
+            else:
+                print("Nope")
 
         print(f"You got {self.num_correct}/{len(self.questions)}")
 
