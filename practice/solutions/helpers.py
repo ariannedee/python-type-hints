@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 
-def humanbytes(b: int) -> str:  # from https://stackoverflow.com/a/31631711
+def humanbytes(bytes_: int) -> str:  # from https://stackoverflow.com/a/31631711
     """Return the given bytes as a human friendly KB, MB, GB, or TB string."""
-    b = float(b)
+    b = float(bytes_)
     kb = float(1024)
     mb = float(kb ** 2) # 1,048,576
     gb = float(kb ** 3) # 1,073,741,824

@@ -1,7 +1,13 @@
 import json
 import os
+import sys
+
 from random import shuffle
-from typing import TypedDict, cast
+from typing import cast
+if sys.version_info >= (3, 12):
+    from typing import TypedDict
+else:
+    from typing_extensions import TypedDict
 from collections import defaultdict
 
 from pydantic import TypeAdapter

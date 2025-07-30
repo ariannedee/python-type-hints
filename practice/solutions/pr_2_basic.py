@@ -10,7 +10,7 @@ class Question(TypedDict):
 
 
 def ask(question: Question) -> bool:
-    user_answer = input(question["question"] + "? ")
+    user_answer = input(question["question"].strip("?") + "? ")
     if user_answer.strip().lower() == question["answer"].lower():  # Case-insensitive
         return True
     else:
@@ -18,29 +18,22 @@ def ask(question: Question) -> bool:
 
 
 class Quiz:
-    def __init__(self, questions: list[Question]):
-        self.questions = questions
+    def __init__(self, qs: list[Question]):
+        self.questions = qs
         self.num_correct = 0
 
-    def run(self):
+    def run(self) -> None:
         for question in self.questions:  # Get questions from self
             correct: bool = ask(question)
             if correct:  # Check bool
                 self.num_correct += 1
+                print("Correct!")
+            else:
+                print("Nope")
 
         print(f"You got {self.num_correct}/{len(self.questions)}")
 
 
 if __name__ == "__main__":
-    qs: list[Question] = [  # Rename questions to avoid name conflict
-        {
-            "question": "What is the meaning of life",
-            "answer": "42"
-        },
-        {
-            "question": "Which programming language was named after a British sketch comedy troupe",
-            "answer": "Python"
-        }
-    ]
-
-    Quiz(qs).run()
+    from quiz_questions import questions
+    Quiz(questions).run()
