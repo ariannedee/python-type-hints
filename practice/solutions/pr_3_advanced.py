@@ -45,7 +45,6 @@ class BotPlayer:
         return choice
 
 
-
 class HumanPlayer:
     def __init__(self, name: str) -> None:
         self.name = name

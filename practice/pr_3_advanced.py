@@ -51,7 +51,7 @@ def result_string(m1, m2, winner):
         return "Invalid result"
 
 
-class Game:
+class RPSGame:
     def __init__(self, player1, player2, best_of=3):
         self.player_1 = player1
         self.player_2 = player2
@@ -88,5 +88,5 @@ class Game:
 
 
 if __name__ == "__main__":
-    game = Game(BotPlayer(), BotPlayer())
+    game = RPSGame(BotPlayer(), BotPlayer())
     game.play_game()
