@@ -7,10 +7,9 @@ def smallest_item_index(seq: Sequence[int]) -> Optional[int]:
     smallest = min(seq)         # iterable
     return seq.index(smallest)  # index method
 
-def test_smallest_item_index() -> None:
-    assert smallest_item_index([5, 2, 1, 4, 5]) == 2
-    assert smallest_item_index((1, 1)) == 0
-    assert smallest_item_index([]) is None
+assert smallest_item_index([5, 2, 1, 4, 5]) == 2
+assert smallest_item_index((1, 1)) == 0
+assert smallest_item_index([]) is None
 
 # %%
 from typing import Iterable
@@ -21,13 +20,12 @@ def num_chars(items: Iterable[str]) -> int:
         total += len(item)
     return total
 
-def test_num_chars() -> None:
-    assert num_chars([]) == 0                        # List
-    assert num_chars("1234") == 4                    # String
-    assert num_chars(('1234567', )) == 7             # Tuple
-    assert num_chars({'1', '2345'}) == 5             # Set
-    assert num_chars({'12': 'a', '3456': 'b'}) == 6  # Dict
-    assert num_chars(str(i) for i in range(9)) == 9  # Generator
+assert num_chars([]) == 0                        # List
+assert num_chars("1234") == 4                    # String
+assert num_chars(('1234567', )) == 7             # Tuple
+assert num_chars({'1', '2345'}) == 5             # Set
+assert num_chars({'12': 'a', '3456': 'b'}) == 6  # Dict
+assert num_chars(str(i) for i in range(9)) == 9  # Generator
 
 # %%
 from typing import Sequence
@@ -37,11 +35,10 @@ def total(values: Sequence[float]) -> float:
         return 0
     return values[0] + total(values[1:])
 
-def test_total() -> None:
-    assert total([]) == 0
-    assert total([1]) == 1
-    assert total((1, 2, 3)) == 6
-    assert total([1.1, 2.2, 3.3]) == 6.6
+assert total([]) == 0
+assert total([1]) == 1
+assert total((1, 2, 3)) == 6
+assert total([1.1, 2.2, 3.3]) == 6.6
 
 # %%
 from collections.abc import Mapping
