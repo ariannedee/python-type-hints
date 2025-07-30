@@ -1,12 +1,16 @@
 # %% Aliases
+import sys
 from math import sqrt
-from typing import TypeAlias
 
-type Coords = tuple[float, float]       # 3.12
-Coord: TypeAlias = tuple[float, float]  # 3.10
-Coordinate = tuple[float, float]        # 3.5
+Coord = tuple[float, float]        # 3.5
 
-def distance(p1: Coord, p2: Coordinate) -> float:
+if sys.version_info >= (3, 10):
+    from typing import TypeAlias
+    Coord2: TypeAlias = tuple[float, float]  # 3.10
+
+# type Coord3 = tuple[float, float] # 3.12
+
+def distance(p1: Coord, p2: Coord) -> float:
     return sqrt(
         (p1[0] - p2[0]) ** 2 +
         (p1[1] - p2[1]) ** 2
@@ -19,28 +23,28 @@ from typing import NewType
 
 UserId = NewType("UserId", int)
 
-def get_user(user_id: UserId) -> dict:
-    ...
+def get_user(user_id: UserId) -> dict[str, object]:
+    return {"id": user_id, "name": "Monty"}
 
 uid1 = UserId(1)    # Works
-uid2 = UserId('2')  # Mypy: arg-type
+uid2 = UserId('2')  # mypy: arg-type
 
-get_user(3)          # Mypy: arg-type
+get_user(3)          # mypy: arg-type
 get_user(UserId(4))  # Works
 
 # %% NewType + TypeDict example
 from typing import TypedDict, NewType
 
-UserId = NewType("UserId", int)
+UserId_ = NewType("UserId_", int)
 ProductId = NewType("ProductId", int)
 
 class Purchase(TypedDict):
-    user_id: UserId
+    user_id: UserId_
     product_id: ProductId
     quantity: int
 
 purchase: Purchase = {
-    "user_id": UserId(1),
+    "user_id": UserId_(1),
     "product_id": ProductId(42),
     "quantity": 3,
 }
