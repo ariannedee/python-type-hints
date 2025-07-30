@@ -22,7 +22,7 @@ def speak[T: Animal](animal: T) -> None:  # Type must be an Animal, Dog is okay
 speak(Dog())  # Okay
 
 # %% Constrained generics
-def last[T: (int, float, str) = int](sequence: list[T]) -> T:  # T must be int, float or str
+def last[T: (int, float, str)](sequence: list[T]) -> T:  # T must be int, float or str
     return sequence[-1]
 
 print(last([1, 2, 3]))
