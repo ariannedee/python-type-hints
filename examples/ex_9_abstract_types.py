@@ -1,7 +1,7 @@
 # %%
-from typing import Optional, Sequence  # Use int | None in 3.10+
+from typing import Sequence
 
-def smallest_item_index(seq: Sequence[int]) -> Optional[int]:
+def smallest_item_index(seq: Sequence[int]) -> int | None:
     if len(seq) == 0:           # length
         return None
     smallest = min(seq)         # iterable

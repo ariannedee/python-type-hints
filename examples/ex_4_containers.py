@@ -1,4 +1,4 @@
-# %% Import from typing vs built-in generics
+# %% Import from typing vs. built-in generics
 from __future__ import annotations  # Use in < 3.9 to support built-in generics, e.g. list[int]
 
 from typing import List
@@ -15,7 +15,7 @@ grocery_list: list[str] = ["Spaghetti", "Eggs", "Garlic"]
 users: list[User] = [User(1, "Monty", True)]  # Custom class
 truthy: list = [1, 1.0, True, '1']  # Any type
 falsy: list[Any] = [0, 0.0, False, '']  # Any type
-numbers: list[int | float] = [1, 2.5, 3, 4.0]  # Multiple types
+numbers: list[int | float] = [1, 2.5, 3, 4.0]  # Multiple types (3.10)
 
 # %% Dictionaries
 letter_counts: dict[str, int] = {"a": 3, "b": 1, "n": 2}
@@ -51,7 +51,7 @@ locations: list[Location] = [
 import sys
 
 if sys.version_info >= (3, 11):
-    from typing import TypedDict, NotRequired  # 3.11+
+    from typing import TypedDict, NotRequired  # 3.11
 
     class Point(TypedDict):
         x: int

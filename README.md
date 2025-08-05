@@ -13,7 +13,7 @@ Before the class, please follow these instructions:
 1. [Download the resources](#5-at-the-beginning-of-class-download-the-resources)
 
 ## Set up instructions
-### 1. Ensure Python 3.9 or higher is installed
+### 1. Ensure Python 3.10 or higher is installed
 Install the latest version from here: https://www.python.org/downloads/
 
 Then, in *PowerShell* on Windows or *Terminal* on Mac or Linux,
@@ -26,7 +26,7 @@ make sure you can access Python from the command line.
 1. `$ py -3.13 --version` (replace 3.13 with your target version number)
 
 One or more of those commands should print 
-a Python version of 3.9 or higher.
+a Python version of 3.10 or higher.
  
 If none of them do, you have to follow instructions to
 [add Python to your PATH variable](docs/WINSETPATH.md).

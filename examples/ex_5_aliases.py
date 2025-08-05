@@ -1,14 +1,10 @@
 # %% Aliases
-import sys
 from math import sqrt
+from typing import TypeAlias
 
-Coord = tuple[float, float]        # 3.5
-
-if sys.version_info >= (3, 10):
-    from typing import TypeAlias
-    Coord2: TypeAlias = tuple[float, float]  # 3.10
-
-# type Coord3 = tuple[float, float] # 3.12
+Coord = tuple[float, float]              # 3.5
+Coord2: TypeAlias = tuple[float, float]  # 3.10
+# type Coord3 = tuple[float, float]      # 3.12
 
 def distance(p1: Coord, p2: Coord) -> float:
     return sqrt(

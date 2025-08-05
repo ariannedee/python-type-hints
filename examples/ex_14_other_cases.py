@@ -18,27 +18,24 @@ print(as_dict(a=1, b=2.0))
 print(as_dict(a=["a", "list"]))  # mypy: arg-type
 
 # %% Decorators
-import sys
+from typing import Callable, ParamSpec, TypeVar
 
-if sys.version_info >= (3, 10):
-    from typing import Callable, ParamSpec, TypeVar
+P = ParamSpec('P')  # 3.10
+R = TypeVar('R')
 
-    P = ParamSpec('P')  # 3.10+
-    R = TypeVar('R')
+def log_decorator(func: Callable[P, R]) -> Callable[P, R]:
+    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+        result = func(*args, **kwargs)
+        print(f"Input: {args}, {kwargs}")
+        print(f"Output: {result}")
+        return result
+    return wrapper
 
-    def log_decorator(func: Callable[P, R]) -> Callable[P, R]:
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
-            result = func(*args, **kwargs)
-            print(f"Input: {args}, {kwargs}")
-            print(f"Output: {result}")
-            return result
-        return wrapper
+@log_decorator
+def add_numbers(a: int, b: int) -> int:
+    return a + b
 
-    @log_decorator
-    def add_numbers(a: int, b: int) -> int:
-        return a + b
-
-    print(add_numbers('1', '2'))  # mypy: arg-type
+print(add_numbers('1', '2'))  # mypy: arg-type
 
 # %% Generators
 from typing import Generator, Iterator
@@ -56,13 +53,13 @@ g: Generator[int, None, None] = fib(10)
 i: Iterator[int] = (x for x in range(3))
 
 # %% Overload
-from typing import overload, Union
+from typing import overload
 
 @overload
 def parse_value(value: str) -> int: ...
 @overload
 def parse_value(value: list[str]) -> list[int]: ...
-def parse_value(value: Union[str, list[str]]) -> Union[int, list[int]]:  # In 3.10+, use | instead of Union
+def parse_value(value: Union[str, list[str]]) -> int | list[int]:  # 3.10
     """
     Parse either a single string or a list of strings into integers.
     """

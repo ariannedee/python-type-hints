@@ -8,14 +8,13 @@ def print_twice(x: Any) -> None:
 # %%  Multiple values
 import sys
 
-if sys.version_info >= (3, 10):
-    from math import sqrt
+from math import sqrt
 
-    def hypotenuse(a: int | float, b: int | float) -> float:  # 3.10+
-        return sqrt(a ** 2 + b ** 2)
+def hypotenuse(a: int | float, b: int | float) -> float:  # 3.10
+    return sqrt(a ** 2 + b ** 2)
 
-    assert hypotenuse(3, 4) == 5.0
-    assert hypotenuse(3.0, 4.0) == 5.0
+assert hypotenuse(3, 4) == 5.0
+assert hypotenuse(3.0, 4.0) == 5.0
 
 # %%  <3.10, use Union
 from typing import Union
