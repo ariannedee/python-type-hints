@@ -1,3 +1,4 @@
+# %% Basic function comparison
 def is_correct_basic(guess, answer):
     return guess.strip().lower() == answer.lower()
 
@@ -65,9 +66,7 @@ groceries_by_aisle = {  # Return value from group_by_category()
 
 assert group_by_category(grocery_list) == groceries_by_aisle
 
-
 # %% With docstring
-
 def group_by_category_w_docstring(items):
     """ Group items based on their category.
     Args:
@@ -86,9 +85,7 @@ def group_by_category_w_docstring(items):
     """
     ...
 
-
 # %% With built-in generic containers
-
 def group_by_category_w_hints(items: list[dict[str, str]]) -> dict[str, list[str]]:
     grouped: dict[str, list[str]] = {}
     for item in items:
