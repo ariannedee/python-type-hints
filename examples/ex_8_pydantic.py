@@ -56,7 +56,7 @@ class Adult(BaseModel):
 user_data = {"name": "Monty3", "age": 15, "email": "@monty@python.com"}
 
 try:
-    user = User(**user_data)
+    user = Adult(**user_data)
     print(f"✅ Valid user: {user}")
 except ValidationError as e:
     print(f"❌ Invalid user data for {user_data['name']}:")
