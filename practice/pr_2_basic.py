@@ -2,7 +2,8 @@
 1. Add type hints to functions.
 2. Find at least 2 bugs.
 3. Get mypy to pass with no errors
-4. Bonus: Run with questions from quiz_questions.py and get mypy to pass
+4. Make answer check case-insensitive
+5. Bonus: Run with questions from quiz_questions.py and get mypy to pass
 """
 
 def ask(question):
