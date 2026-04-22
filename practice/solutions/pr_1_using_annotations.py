@@ -1,4 +1,6 @@
-from __future__ import annotations  # Required to use list[] in <3.9
+"""
+Display the 5 largest files in a folder in the form '<filename>: <size>'
+"""
 
 from pathlib import Path
 
@@ -28,7 +30,7 @@ if __name__ == "__main__":
 
     all_files: list[Path] = get_files(folder)
     files_w_sizes: list[tuple[Path, int]] = get_file_sizes(all_files)
-    largest: list[tuple[Path, int]] = largest_files(files_w_sizes)
+    largest: list[tuple[Path, int]] = largest_files(files_w_sizes, num=5)
 
     for file, size in largest:
         print(f"{file.name}, {humanbytes(size)}")
