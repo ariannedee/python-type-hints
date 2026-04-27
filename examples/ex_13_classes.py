@@ -20,6 +20,19 @@ counter_1.increment()
 counter_1.increment()
 print(counter_2.count)
 
+# %% Overriding methods
+from typing import override
+
+
+class Parent:
+    def speak(self) -> None:
+        print("Hello")
+
+class Baby(Parent):
+    @override
+    def speak(self) -> None:
+        print("Goo goo")
+
 # %% ClassVar
 from typing import ClassVar
 
@@ -48,7 +61,7 @@ class Node:
         self.next = next_
 
 # %% Forward references with future import
-from __future__ import annotations  # Must be at the top of a file
+from __future__ import annotations  # Not needed in 3.14+
 
 class Node2:
     def __init__(self, value: int, next_: Node2 | None = None) -> None:

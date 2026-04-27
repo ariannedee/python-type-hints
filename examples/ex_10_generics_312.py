@@ -1,4 +1,3 @@
-"""Only run this file in 3.12+ (See PEP """
 # %% Generic syntax for functions
 def first[T](items: list[T]) -> T:
     return items[0]

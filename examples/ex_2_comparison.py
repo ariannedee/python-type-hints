@@ -120,3 +120,22 @@ def group_by_category_w_typed_dict(items: List[Item]) -> Dict[str, List[str]]:
 grocery_list: List[Item]
 
 group_by_category_w_typed_dict(grocery_list)
+
+#%% ML example
+def train_model(data, labels, config):
+    # ... 100 lines of code ...
+    result = ...
+    return result
+
+#%% ML example with type annotations
+import pandas as pd
+import numpy as np
+
+def train_model_w_hints(
+    data: pd.DataFrame,
+    labels: np.ndarray,
+    config: dict[str, float]
+) -> dict[str, np.ndarray]:
+    # ... 100 lines of code ...
+    result = {}
+    return result

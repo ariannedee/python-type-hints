@@ -47,3 +47,24 @@ purchase: Purchase = {
 
 def process(p: Purchase) -> None:
     print(f"User {p['user_id']} bought {p['quantity']} of product {p['product_id']}")
+
+# %% Deeply nested types without aliases
+
+def process_batch(
+    data: list[list[float]],
+    ids: list[str]
+) -> tuple[dict[str, list[float]], list[str]]:
+    ...
+
+# %% Nested types with aliases
+from typing import TypeAlias
+
+Embedding: TypeAlias = list[float]
+UserID: TypeAlias = str
+Batch: TypeAlias = list[Embedding]
+
+def process_batch_w_aliases(
+    embeddings: Batch,
+    user_ids: list[UserID]
+) -> tuple[dict[UserID, Embedding], list[UserID]]:
+    ...
