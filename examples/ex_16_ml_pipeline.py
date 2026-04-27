@@ -71,5 +71,5 @@ def run_pipeline(train_path: str, test_path: str) -> Accuracy:
 
 
 if __name__ == "__main__":
-    final_accuracy = run_pipeline("../practice/data/train.csv", "data/test.csv")
+    final_accuracy = run_pipeline("data/train.csv", "data/test.csv")
     print(f"Model accuracy: {final_accuracy:.2%}")
