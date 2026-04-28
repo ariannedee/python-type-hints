@@ -1,5 +1,8 @@
 """
-Add type hints to functions. Find at least 2 bugs.
+1. Add type hints to functions.
+2. Find at least 2 bugs.
+3. Make answers case-insensitive
+4. Bonus: Run with questions from quiz_questions.py and get mypy to pass
 """
 from typing import TypedDict
 
