@@ -1,4 +1,5 @@
 """ Type hinting example for Hugging Face transformers
+pip install torch
 pip install transformers <- types included
 """
 from transformers import (
